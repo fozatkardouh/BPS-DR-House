@@ -3,6 +3,7 @@ package at.refugeescode.drhouse.endpoint;
 import at.refugeescode.drhouse.model.Doctor;
 import at.refugeescode.drhouse.model.Patient;
 import at.refugeescode.drhouse.model.Patientdto;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,10 +12,11 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 @RequestMapping
+@RequiredArgsConstructor
 public class Admission {
 
-    private RestTemplate restTemplate;
-    private Doctor doctor;
+    private final RestTemplate restTemplate;
+    private final Doctor doctor;
 
     @PostMapping("/patients")
     void admitNew(@RequestBody Patientdto patientdto) {
