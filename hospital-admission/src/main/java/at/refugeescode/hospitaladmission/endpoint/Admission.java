@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 @RestController
 @RequestMapping
@@ -16,7 +17,7 @@ public class Admission {
 
     private final RestTemplate restTemplate;
 
-    @Value("${entry.url}")
+    @Value("${house.url}")
     private String url;
 
     @PostMapping("/patients")
@@ -29,7 +30,7 @@ public class Admission {
     @GetMapping("/patients")
     Patientdto test(Patientdto patientdto) {
         patientdto.setName("Fozat");
-        patientdto.setSymptoms(Arrays.asList("11", "22"));
+        patientdto.setSymptoms(Collections.singletonList("coughing"));
         return patientdto;
     }
 

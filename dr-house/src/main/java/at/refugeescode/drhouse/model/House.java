@@ -26,8 +26,8 @@ public class House implements Doctor {
         return optionalIllness.orElse("lubus");
     }
 
-    public void addNewIllness(String illnessSymptom, String illness) {
-        diseases.put(illnessSymptom, illness);
+    public void addNewIllness(String symptom, String illness) {
+        diseases.put(symptom, illness);
     }
 
 }

@@ -9,7 +9,7 @@ public class Patient {
     private List<String> symptoms;
     private String illness;
 
-    public Patient(String name, List<String> symptoms, String uuid) {
+    public Patient(String uuid, String name, List<String> symptoms) {
         this.name = name;
         this.symptoms = symptoms;
         this.uuid = uuid;

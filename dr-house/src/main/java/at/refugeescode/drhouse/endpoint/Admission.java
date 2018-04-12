@@ -20,7 +20,7 @@ public class Admission {
 
     @PostMapping("/patients")
     void admitNew(@RequestBody Patientdto patientdto) {
-        Patient patient = new Patient(patientdto.getName(), patientdto.getSymptoms(), patientdto.getUuid());
+        Patient patient = new Patient(patientdto.getUuid(), patientdto.getName(), patientdto.getSymptoms());
         String illness = doctor.diagnose(patient);
         patient.setIllness(illness);
         System.out.println(patient.getName() + " has " + patient.getIllness());
