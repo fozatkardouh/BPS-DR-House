@@ -1,7 +1,10 @@
 package at.refugeescode.drhouse.model;
 
+import lombok.Data;
+
 import java.util.List;
 
+@Data
 public class Patient {
 
     private String uuid;
@@ -13,26 +16,6 @@ public class Patient {
         this.name = name;
         this.symptoms = symptoms;
         this.uuid = uuid;
-    }
-
-    public String getUuid() {
-        return uuid;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public List<String> getSymptoms() {
-        return symptoms;
-    }
-
-    public String getIllness() {
-        return illness;
-    }
-
-    public void setIllness(String illness) {
-        this.illness = illness;
     }
 
 }
