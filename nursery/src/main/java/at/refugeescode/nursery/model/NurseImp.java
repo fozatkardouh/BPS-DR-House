@@ -12,11 +12,11 @@ public class NurseImp implements Nurse {
     private HashMap<String, String> treatmentRepo = new HashMap<>();
 
     @Override
-    public void treat(Patient patient) {
+    public String treat(Patient patient) {
         String illness = patient.getIllness();
         String treatment = treatmentRepo.get(patient.getIllness());
-        patient.setTreatment(treatment);
         log.info("Treating " + patient.getName() + " who has " + illness + " with " + patient.getTreatment());
+        return treatment;
     }
 
     public void addTreatment(String illness, String treatment) {

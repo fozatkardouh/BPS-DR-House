@@ -7,6 +7,7 @@ import at.refugeescode.accountancy.repository.PatientRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
 
@@ -19,20 +20,23 @@ public class AccountantEndpoint {
     private final PatientRepository patientRepository;
 
     @PostMapping
-    public Patient calculateBills(@RequestBody PatientDto patientDto) {
+    public Boolean calculateBills(@RequestBody PatientDto patientDto) {
         Patient patient = getPatient(patientDto);
-        accountant.calculateBill(patient);
+        Double bill = accountant.calculateBill(patient);
+        patient.setBill(bill);
+        patient.setLocalDateTime(LocalDateTime.now());
         patientRepository.save(patient);
-        return patient;
+        return true;
     }
 
     private Patient getPatient(PatientDto patientDto) {
         return Patient.builder()
-                    .uuidInMongoDB(patientDto.getUuid())
-                    .illness(patientDto.getIllness())
-                    .name(patientDto.getName())
-                    .symptoms(patientDto.getSymptoms())
-                    .build();
+                .uuidInMongoDB(patientDto.getUuid())
+                .illness(patientDto.getIllness())
+                .name(patientDto.getName())
+                .symptoms(patientDto.getSymptoms())
+                .treatment(patientDto.getTreatment())
+                .build();
     }
 
     @GetMapping("/invoices")

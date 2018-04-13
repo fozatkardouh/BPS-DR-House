@@ -20,21 +20,22 @@ public class NurseryEndpoint {
     private final RestTemplate restTemplate;
     private final Nurse nurse;
 
-    @Value("accountant.url")
+    @Value("${accountant.url}")
     private String url;
 
     @PostMapping
-    public Patient treat(@RequestBody PatientDto patientDto) {
+    public PatientDto treat(@RequestBody PatientDto patientDto) {
         Patient patient = Patient.builder()
                 .uuid(patientDto.getUuid())
                 .illness(patientDto.getIllness())
                 .name(patientDto.getName())
                 .symptoms(patientDto.getSymptoms())
                 .build();
-        nurse.treat(patient);
+        String treatment = nurse.treat(patient);
+        patient.setTreatment(treatment);
         patientRepository.save(patient);
-        restTemplate.postForEntity(url, patient, Patient.class);
-        return patient;
+        restTemplate.postForEntity(url, patient, Boolean.class);
+        return patientDto;
     }
 
     @GetMapping

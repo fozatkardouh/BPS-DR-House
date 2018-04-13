@@ -4,10 +4,10 @@ import at.refugeescode.hospitaladmission.model.Patient;
 import at.refugeescode.hospitaladmission.model.Patientdto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Arrays;
 import java.util.Collections;
 
 @RestController
@@ -21,10 +21,10 @@ public class Admission {
     private String url;
 
     @PostMapping("/patients")
-    Patientdto admitNew(@RequestBody Patientdto patientdto) {
+    public Patient admitNew(@RequestBody Patientdto patientdto) {
         Patient patient = new Patient(patientdto.getName(), patientdto.getSymptoms());
-        restTemplate.postForEntity(url, patient, Patient.class);
-        return patientdto;
+        ResponseEntity<Patient> patientResponseEntity = restTemplate.postForEntity(url, patient, Patient.class);
+        return patientResponseEntity.getBody();
     }
 
     @GetMapping("/patients")

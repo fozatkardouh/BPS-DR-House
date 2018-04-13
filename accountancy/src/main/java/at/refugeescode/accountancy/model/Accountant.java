@@ -3,6 +3,6 @@ package at.refugeescode.accountancy.model;
 
 public interface Accountant {
 
-    void calculateBill(Patient patient);
+    Double calculateBill(Patient patient);
 
 }

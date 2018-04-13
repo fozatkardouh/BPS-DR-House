@@ -15,7 +15,7 @@ public class ProcessPatient {
     private final RestTemplate restTemplate;
     private final Doctor doctor;
 
-    @Value("nursery.url")
+    @Value("${nursery.url}")
     private String url;
 
     public void processPatient(Patientdto patientdto) {
