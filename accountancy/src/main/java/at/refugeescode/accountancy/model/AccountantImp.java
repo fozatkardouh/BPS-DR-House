@@ -10,7 +10,7 @@ public class AccountantImp implements Accountant {
     private HashMap<String, Double> billRepo = new HashMap<>();
 
     @Override
-    public Double calculateBill(Patient patient) {
+    public Double calculateBill(at.refugeescode.accountancy.model.Patient patient) {
         return billRepo.get(patient.getTreatment());
     }
 

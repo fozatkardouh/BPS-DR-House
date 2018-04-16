@@ -2,17 +2,22 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="accountancy" />
         <module name="dr-house" />
         <module name="hospital-admission" />
+        <module name="nursery" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="accountancy" target="9" />
       <module name="dr-house" target="9" />
       <module name="hospital-admission" target="9" />
+      <module name="nursery" target="9" />
     </bytecodeTargetLevel>
   </component>
 </project>
