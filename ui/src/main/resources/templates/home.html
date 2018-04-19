@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Admission Page</title>
+</head>
+<body>
+<form th:action="@{/}" th:object="${newPatientDto}" method="post">
+    <label>Patient name:</label><br/>
+    <input type="text" th:field="*{name}"/><br/>
+    <label>Patient symptoms, (separate with [, ]:)</label><br/>
+    <input type="text" th:field="*{symptoms}"/><br/>
+    <button type="submit">Admit</button>
+</form>
+</body>
+</html>
