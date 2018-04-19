@@ -5,6 +5,9 @@
     <title>Invoices</title>
 </head>
 <body>
+<div class="container">
+    <th:block th:include="fragments/base :: header"></th:block>
+</div>
 <h2 th:if="${#lists.isEmpty(allInvoices)}">Nothing To Show</h2>
 <table th:if="${not #lists.isEmpty(allInvoices)}">
     <thead>

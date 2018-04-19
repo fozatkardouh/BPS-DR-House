@@ -5,6 +5,9 @@
     <title>Admission Page</title>
 </head>
 <body>
+<div class="container">
+<th:block th:include="fragments/base :: header"></th:block>
+</div>
 <form th:action="@{/}" th:object="${newPatientDto}" method="post">
     <label>Patient name:</label><br/>
     <input type="text" th:field="*{name}"/><br/>
