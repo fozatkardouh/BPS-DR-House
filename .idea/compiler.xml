@@ -11,6 +11,7 @@
         <module name="dr-house" />
         <module name="hospital-admission" />
         <module name="nursery" />
+        <module name="ui" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -18,6 +19,7 @@
       <module name="dr-house" target="9" />
       <module name="hospital-admission" target="9" />
       <module name="nursery" target="9" />
+      <module name="ui" target="9" />
     </bytecodeTargetLevel>
   </component>
 </project>
