@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,11 +23,13 @@ public class AccountancyEndpoint {
     @Value("${accountancy.url}")
     private String accountancyURL;
 
+    @RolesAllowed("ROLE_ACCOUNTANT")
     @ModelAttribute("allInvoices")
     public List<FinalizedPatient> getAllInvoices() {
         return Arrays.asList(restTemplate.getForObject(accountancyURL, FinalizedPatient[].class));
     }
 
+    @RolesAllowed("ROLE_ACCOUNTANT")
     @GetMapping
     private String viewAllInvoices() {
         return "invoices";
